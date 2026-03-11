@@ -1,0 +1,306 @@
+.dashboard-page {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 20% 20%, rgba(0, 229, 255, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(56, 154, 255, 0.2), transparent 40%),
+    #0b121c;
+}
+
+.dashboard-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dashboard-orb {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: -140px;
+  top: -160px;
+  border-radius: 50%;
+  background: conic-gradient(from 120deg, rgba(0, 229, 255, 0.5), rgba(0, 120, 255, 0.2), rgba(124, 255, 248, 0.35));
+  filter: blur(2px);
+  opacity: 0.4;
+  animation: orbPulse 14s ease-in-out infinite;
+}
+
+.dashboard-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.08;
+  transform: perspective(800px) rotateX(50deg) translateY(-120px);
+  transform-origin: top;
+}
+
+.dashboard-ring {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  right: -200px;
+  top: 120px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  box-shadow: 0 0 80px rgba(0, 229, 255, 0.1);
+  animation: ringFloat 18s ease-in-out infinite;
+}
+
+.dashboard-hero {
+  position: relative;
+  z-index: 1;
+  align-items: center;
+}
+
+.dashboard-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pop-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #9de8ff;
+}
+
+.pop-letter {
+  display: inline-block;
+  transform: translateY(14px) rotateX(35deg) scale(0.85);
+  opacity: 0;
+  animation: popIn 1.8s ease forwards;
+  animation-delay: calc(var(--i) * 0.08s);
+  text-shadow: 0 10px 20px rgba(0, 229, 255, 0.25);
+}
+
+.dashboard-headline {
+  font-size: clamp(28px, 3.5vw, 40px);
+  margin: 0;
+}
+
+.dashboard-headline span {
+  color: #7df0ff;
+  text-shadow: 0 10px 20px rgba(0, 229, 255, 0.2);
+}
+
+.dashboard-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.badge-card {
+  min-width: 110px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(12, 24, 38, 0.7);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.badge-card h3 {
+  margin: 0;
+}
+
+.badge-label {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7cc6e3;
+}
+
+.dashboard-cockpit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 300px;
+  perspective: 1400px;
+}
+
+.cockpit-card {
+  position: relative;
+  padding: 22px;
+  border-radius: 22px;
+  background: linear-gradient(160deg, rgba(17, 33, 52, 0.95), rgba(9, 18, 30, 0.95));
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  transform-style: preserve-3d;
+  transform: rotateX(8deg) rotateY(-12deg);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+}
+
+.cockpit-card:hover {
+  transform: rotateX(0deg) rotateY(0deg) translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.cockpit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.cockpit-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 229, 255, 0.2);
+  color: #7df0ff;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cockpit-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: #7cc6e3;
+}
+
+.cockpit-glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.3), transparent 70%);
+  filter: blur(25px);
+  animation: glowFloat 10s ease-in-out infinite;
+  z-index: -1;
+}
+
+.dashboard-card {
+  position: relative;
+  display: block;
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(18, 31, 46, 0.9);
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  text-decoration: none;
+  color: #e8f0f9;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.dashboard-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(0, 229, 255, 0.2), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dashboard-card p {
+  color: #b7c6d6;
+  line-height: 1.6;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px) rotateX(6deg) rotateY(-4deg);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+}
+
+.dashboard-card:hover::after {
+  opacity: 1;
+}
+
+.pulse-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.pulse-card {
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(8, 16, 26, 0.85);
+  border: 1px solid rgba(124, 255, 248, 0.18);
+  box-shadow: inset 0 0 30px rgba(0, 229, 255, 0.08);
+}
+
+.pulse-card h3 {
+  margin-bottom: 10px;
+}
+
+.pulse-card p {
+  color: #b7c6d6;
+  line-height: 1.6;
+}
+
+@keyframes popIn {
+  to {
+    transform: translateY(0) rotateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes orbPulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(20px) scale(1.05);
+  }
+}
+
+@keyframes ringFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(8deg);
+  }
+}
+
+@keyframes glowFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-18px);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-cockpit {
+    min-height: auto;
+  }
+
+  .cockpit-card {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pop-letter,
+  .dashboard-orb,
+  .dashboard-ring,
+  .cockpit-glow {
+    animation: none;
+  }
+
+  .dashboard-card,
+  .cockpit-card {
+    transition: none;
+  }
+}

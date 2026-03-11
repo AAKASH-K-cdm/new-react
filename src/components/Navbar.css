@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap');
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #0b121c 0%, #101c2a 45%, #0b121c 100%);
+  color: white;
+  padding: 16px 6%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.nav-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  font-family: 'Space Grotesk', 'Poppins', sans-serif;
+  letter-spacing: 0.4px;
+  text-shadow: 0 8px 18px rgba(0, 229, 255, 0.2);
+  transform-style: preserve-3d;
+}
+
+.logo-mark {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(12, 29, 44, 0.9), rgba(18, 44, 66, 0.9));
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4), inset 0 0 12px rgba(0, 229, 255, 0.35);
+  transform: perspective(600px) rotateX(14deg);
+  animation: logoFloat 6s ease-in-out infinite;
+}
+
+.logo-ring {
+  position: absolute;
+  inset: 5px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  box-shadow: inset 0 0 12px rgba(0, 229, 255, 0.2);
+  transform: translateZ(10px);
+}
+
+.logo-core {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #9ff3ff 0%, #00a2ff 60%, #006bff 100%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(14px);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.8);
+  animation: logoPulse 2.8s ease-in-out infinite;
+}
+
+.logo-text {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-tagline {
+  font-size: 12px;
+  color: #9fb0c2;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #d2dbe6;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #00e5ff;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-button {
+  padding: 8px 14px;
+  border-radius: 18px;
+  border: 1px solid #00e5ff;
+  color: #00e5ff;
+  text-decoration: none;
+  font-size: 13px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-button.active,
+.nav-button:hover {
+  background: #00e5ff;
+  color: #0b1320;
+}
+
+.nav-button.ghost {
+  border-color: #4c5a6a;
+  color: #cbd6e1;
+}
+
+.nav-button.ghost:hover {
+  background: #1c2733;
+  color: #ffffff;
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: perspective(600px) rotateX(14deg) translateY(0);
+  }
+  50% {
+    transform: perspective(600px) rotateX(6deg) translateY(-4px);
+  }
+}
+
+@keyframes logoPulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateZ(14px) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(-50%, -50%) translateZ(14px) scale(1.15);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 980px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
