@@ -1,3 +1,4 @@
+
 const express = require("express");
 const cors = require("cors");
 const crypto = require("crypto");
@@ -5,6 +6,7 @@ const fs = require("fs/promises");
 const path = require("path");
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 4000;
 const DATA_DIR = path.join(__dirname, "data");
 const USERS_FILE = path.join(DATA_DIR, "users.json");

@@ -1,12 +1,10 @@
 import { getAuthToken } from "./auth";
 
-const DEFAULT_DEV_API = "http://localhost:4000";
+const DEFAULT_API = "https://backend-repo-for-company.onrender.com";
 const API_BASE_URL = (process.env.REACT_APP_API_BASE_URL || "")
   .replace(/\/+$/, "");
 
-const resolvedBaseUrl = API_BASE_URL || (
-  process.env.NODE_ENV === "development" ? DEFAULT_DEV_API : ""
-);
+const resolvedBaseUrl = API_BASE_URL || DEFAULT_API;
 
 const buildUrl = (path) => {
   if (!resolvedBaseUrl) {
