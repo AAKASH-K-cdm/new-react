@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../lib/api";
 import { setAuthSession } from "../lib/auth";
+import { logLoginEvent } from "../lib/firestoreLogs";
 import "./Login.css";
 
 function Login() {
@@ -58,8 +59,15 @@ function Login() {
     setIsSubmitting(true);
 
     try {
-      const data = await loginUser({ email: trimmedEmail.toLowerCase(), password });
+      const lowerEmail = trimmedEmail.toLowerCase();
+      const data = await loginUser({ email: lowerEmail, password });
       setAuthSession(data.token, data.user);
+      const userId = data.user?.id || data.user?._id || data.user?.uid || null;
+      void logLoginEvent({
+        name: data.user?.name,
+        email: data.user?.email || lowerEmail,
+        userId
+      });
       const displayName = data.user?.name || "back";
       setStatus({ type: "success", message: `Welcome ${displayName}!` });
       setShowSuccess(true);

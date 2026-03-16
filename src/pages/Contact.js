@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { submitContact } from "../lib/api";
+import { logContactMessage } from "../lib/firestoreLogs";
 import "./Page.css";
 import "./Contact.css";
 
@@ -34,8 +35,10 @@ function Contact() {
     setIsSubmitting(true);
 
     try {
+      const messageSnapshot = { ...form };
       const response = await submitContact(form);
       setStatus({ type: "success", message: response.message || "Message sent." });
+      void logContactMessage(messageSnapshot);
       setForm({ name: "", email: "", company: "", message: "" });
     } catch (error) {
       setStatus({ type: "error", message: error.message });

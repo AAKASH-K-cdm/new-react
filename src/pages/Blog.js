@@ -32,7 +32,7 @@ function Blog() {
           <div className="card">
             <h3>From MVP to Platform</h3>
             <p>How to plan your architecture for growth without overbuilding.</p>
-          </div>
+          </div> 
           <div className="card">
             <h3>Design Ops that Scale</h3>
             <p>Systems for consistent UX across product lines.</p>

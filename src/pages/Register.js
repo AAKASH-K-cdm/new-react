@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../lib/api";
 import { setAuthSession } from "../lib/auth";
+import { logRegisterEvent } from "../lib/firestoreLogs";
 
 function Register() {
   const navigate = useNavigate();
@@ -126,6 +127,13 @@ function Register() {
 
       const data = await registerUser(payload);
       setAuthSession(data.token, data.user);
+      const userId = data.user?.id || data.user?._id || data.user?.uid || null;
+      void logRegisterEvent({
+        name: payload.name,
+        email: payload.email,
+        mobile: payload.mobile,
+        userId
+      });
       setStatus({ type: "success", message: "Successfully registered!" });
       setShowSuccess(true);
       redirectTimer.current = setTimeout(() => {
